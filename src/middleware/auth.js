@@ -12,7 +12,7 @@ const authentication = (req, res, next) => {
         const decodeedToken = jwt.verify(token, "projectOne")
         // return res.send(decodeedToken)
     }catch{
-        return res.status(400).send({status: false, msg: "This token is not valid"})
+        return res.status(500).send({status: false, msg: "This token is not valid"})
     }
     next()
 }
@@ -35,7 +35,7 @@ const authroisation1 = async (req, res, next) => {
         }
         // return res.send(decodeedToken)
     }catch(e){
-        return res.status(400).send({status: false, msg: e.message})
+        return res.status(500).send({status: false, msg: e.message})
     }
 }
 
@@ -57,7 +57,7 @@ const authroisation2 = async (req, res, next) => {
         }
         // return res.send(decodeedToken)
     }catch(e){
-        return res.status(400).send({status: false, msg: e.message})
+        return res.status(500).send({status: false, msg: e.message})
     }
 }
 
