@@ -9,7 +9,7 @@ const createAuthor = async (req, res) => {
         const author = await authorModel.create(data)
         res.status(201).send({status: true, data: author})
     }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
@@ -24,7 +24,7 @@ const login = async function (req, res){
     res.setHeader("x-api-key", token)
     res.status(201).send({status: true, token: token})
   }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
