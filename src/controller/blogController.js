@@ -14,7 +14,7 @@ const createBlog = async (req, res) => {
         const blog = await blogModel.create(data)
         res.status(201).send({status: true, data: blog})
     }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
@@ -34,7 +34,7 @@ const getBlog = async (req, res) => {
         }
         return res.status(201).send({status: true, data: blog})
     }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
@@ -67,7 +67,7 @@ const updateBlog = async (req, res) => {
         const updatedBlog = await blogModel.findOneAndUpdate({_id: id}, data, {new: true})
         return res.status(201).send({status: true, msg: updatedBlog})
     }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
@@ -88,7 +88,7 @@ const deleteBlogById = async (req, res) => {
         const deletedBlog = await blogModel.findOneAndUpdate({_id: id}, {isDeleted: true, deletedAt: moment().format()}, {new: true})
         return res.status(200).send({status: true, msg: deletedBlog})
     }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
@@ -109,7 +109,7 @@ const deleteBlogBykey = async (req, res) => {
         const deletedBlog = await blogModel.findOneAndUpdate(data, {isDeleted: true, deletedAt: moment().format()}, {new: true})
         return res.status(200).send({status: true, msg: deletedBlog})
     }catch(e){
-        res.status(400).send({status: false, msg: e.message})
+        res.status(500).send({status: false, msg: e.message})
     }
 }
 
